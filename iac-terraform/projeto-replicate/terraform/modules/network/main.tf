@@ -25,7 +25,7 @@ module "vpc-east" {
   #   subnet_type = "app"
   # }
 
-  database_subnets           = ["10.0.101.0/24", "10.0.102.0/24", "10.0.103.0/24"]
+  database_subnets = ["10.0.101.0/24", "10.0.102.0/24", "10.0.103.0/24"]
   # database_subnet_group_name = var.name_subnet_db
   # database_subnet_group_tags = {
   #   subnet_type = "database"
@@ -53,7 +53,7 @@ module "vpc-west" {
   name = var.name_vpc_west-1
   cidr = "10.1.0.0/16"
 
-  azs = slice(data.aws_availability_zones.azs_east-1.names, 0, 2)
+  azs = slice(data.aws_availability_zones.azs_west-1.names, 0, 2)
 
   public_subnets = ["10.1.1.0/24", "10.1.2.0/24", "10.1.3.0/24"]
   # public_subnet_group_name = var.name_subnet_app
@@ -61,7 +61,7 @@ module "vpc-west" {
   #   subnet_type = "app"
   # }
 
-  database_subnets           = ["10.1.101.0/24", "10.1.102.0/24", "10.1.103.0/24"]
+  database_subnets = ["10.1.101.0/24", "10.1.102.0/24", "10.1.103.0/24"]
   # database_subnet_group_name = var.name_subnet_db
   # database_subnet_group_tags = {
   #   subnet_type = "database"
