@@ -14,7 +14,7 @@ module "vpc-east" {
     aws = aws.east-1
   }
 
-  name = var.name_vpc
+  name = var.name_vpc_east-1
   cidr = "10.0.0.0/16"
 
   azs = slice(data.aws_availability_zones.azs_east-1.names, 0, 2)
@@ -41,6 +41,44 @@ module "vpc-east" {
     Project     = var.name_project
   }
 }
+
+module "vpc-west" {
+  source  = "terraform-aws-modules/vpc/aws"
+  version = "3.14.4"
+
+  providers = {
+    aws = aws.west-1
+  }
+
+  name = var.name_vpc_west-1
+  cidr = "10.1.0.0/16"
+
+  azs = slice(data.aws_availability_zones.azs_east-1.names, 0, 2)
+
+  public_subnets = ["10.1.1.0/24", "10.1.2.0/24", "10.1.3.0/24"]
+  # public_subnet_group_name = var.name_subnet_app
+  # public_subnet_group_tags = {
+  #   subnet_type = "app"
+  # }
+
+  database_subnets           = ["10.1.101.0/24", "10.1.102.0/24", "10.1.103.0/24"]
+  # database_subnet_group_name = var.name_subnet_db
+  # database_subnet_group_tags = {
+  #   subnet_type = "database"
+  # }
+
+  enable_nat_gateway = false
+  enable_vpn_gateway = false
+
+  tags = {
+    Terraform   = "true"
+    Environment = var.environment
+    Name        = "vpc-vini-west"
+    Project     = var.name_project
+  }
+}
+
+#============== OLD TEST ================
 
 #resource "aws_vpc" "main" {
 #   cidr_block       = "10.0.0.0/16"
