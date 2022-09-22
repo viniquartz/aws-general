@@ -37,7 +37,7 @@ module "vpc-east" {
   tags = {
     Terraform   = "true"
     Environment = var.environment
-    Name        = "vpc-vini"
+    Name        = "vpc-vini-east"
     Project     = var.name_project
   }
 }
