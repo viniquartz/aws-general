@@ -9,3 +9,8 @@ module "network" {
   name_subnet_app_west-1 = format("%s-%s-%s-%s", "subnet-app", var.name_project, var.environment, var.region_west-1)
   name_subnet_db_west-1  = format("%s-%s-%s-%s", "subnet-db", var.name_project, var.environment, var.region_west-1)
 }
+
+module "codetools" {
+  source = "./modules/codetools"
+
+}

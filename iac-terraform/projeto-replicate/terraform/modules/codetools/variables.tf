@@ -1,24 +1,17 @@
 variable "environment" {
-  type = string
-  default = ""
+  type    = string
+  default = "dev-remote"
 }
 
 variable "name_project" {
-  type = string
-  default = ""
+  type    = string
+  default = "projeto-replicate-remote"
 }
 
 variable "region_east-1" {
-  type = string
-  default = ""
+  type    = string
+  default = "us-east-1"
 }
-
-variable "region_west-1" {
-  type = string
-  default = ""
-}
-
-# MODULE NETWORK
 
 # MODULE CODETOOLS
 variable "aws_bucket_prefix" {
